@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "_id": "1783916932874",
+      "username": "swayamchaudhary.er007",
+      "email": "swayamchaudhary.er007@gmail.com",
+      "password": "password123",
+      "streak": 12,
+      "level": 4,
+      "xp": 1850,
+      "coins": 350,
+      "currency": "INR",
+      "createdAt": "2026-07-13T04:28:52.874Z",
+      "updatedAt": "2026-07-13T04:28:52.874Z"
+    }
+  ],
+  "expenses": [],
+  "budgets": [],
+  "savingsGoals": [],
+  "reminders": [],
+  "posts": []
+}
