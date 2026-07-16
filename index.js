@@ -18,6 +18,9 @@ try {
 import authRoutes from './routes/auth.js';
 import expenseRoutes from './routes/expenses.js';
 import budgetRoutes from './routes/budgets.js';
+import predictRoutes from './routes/predict.js';
+import ocrRoutes from './routes/ocr.js';
+import voiceParseRoutes from './routes/voice-parse.js';
 
 dotenv.config();
 
@@ -45,6 +48,9 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/expenses', expenseRoutes);
 app.use('/api/budgets', budgetRoutes);
+app.use('/api/predict', predictRoutes);
+app.use('/api/ocr', ocrRoutes);
+app.use('/api/voice-parse', voiceParseRoutes);
 
 // Request logging middleware
 app.use((req, res, next) => {
