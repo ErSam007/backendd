@@ -1,18 +1,18 @@
 import mongoose from 'mongoose';
 
 const expenseSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  userId: { type: mongoose.Schema.Types.Mixed, required: true },
   amount: { type: Number, required: true },
   category: { 
     type: String, 
     required: true,
-    enum: ['Food', 'Transport', 'Education', 'Hostel', 'Books', 'Medical', 'Entertainment', 'Travel', 'Shopping', 'Internet', 'Recharge', 'Bills', 'Emergency', 'Personal Care', 'Others'] 
+    default: 'Others'
   },
   description: { type: String, default: '' },
   date: { type: Date, default: Date.now },
-  paymentMethod: { type: String, enum: ['Cash', 'UPI', 'Card', 'NetBanking'], default: 'UPI' },
+  paymentMethod: { type: String, default: 'UPI' },
   isRecurring: { type: Boolean, default: false },
-  recurrenceInterval: { type: String, enum: ['None', 'Daily', 'Weekly', 'Monthly'], default: 'None' },
+  recurrenceInterval: { type: String, default: 'None' },
   tags: [{ type: String }],
   receiptUrl: { type: String, default: '' },
   merchant: { type: String, default: '' }

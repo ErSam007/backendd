@@ -23,6 +23,7 @@ import budgetRoutes from './routes/budgets.js';
 import predictRoutes from './routes/predict.js';
 import ocrRoutes from './routes/ocr.js';
 import voiceParseRoutes from './routes/voice-parse.js';
+import mobileDeviceRoutes from './routes/mobile-device.js';
 
 dotenv.config();
 
@@ -56,6 +57,7 @@ app.use('/api/budgets', budgetRoutes);
 app.use('/api/predict', predictRoutes);
 app.use('/api/ocr', ocrRoutes);
 app.use('/api/voice-parse', voiceParseRoutes);
+app.use('/api/mobile-device', mobileDeviceRoutes);
 
 // Request logging middleware
 app.use((req, res, next) => {

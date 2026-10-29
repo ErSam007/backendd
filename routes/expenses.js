@@ -13,7 +13,11 @@ router.get('/:userId', async (req, res) => {
   try {
     let list = [];
     if (isMongoConnected) {
-      list = await Expense.find({ userId }).sort({ date: -1 });
+      let filter = { userId };
+      if (mongoose.Types.ObjectId.isValid(userId) && String(new mongoose.Types.ObjectId(userId)) === userId) {
+        filter = { $or: [{ userId: new mongoose.Types.ObjectId(userId) }, { userId }] };
+      }
+      list = await Expense.find(filter).sort({ date: -1 });
     } else {
       list = dbFallback.find('expenses', { userId }).sort((a, b) => new Date(b.date) - new Date(a.date));
     }
