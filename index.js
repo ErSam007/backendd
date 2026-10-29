@@ -5,13 +5,15 @@ import dotenv from 'dotenv';
 import cron from 'node-cron';
 import dns from 'dns';
 
-// Fix for Node.js querySrv ECONNREFUSED issues on Windows
-dns.setDefaultResultOrder('ipv4first');
-try {
-  dns.setServers(['8.8.8.8', '8.8.4.4']);
-  console.log('DNS resolvers configured to Google DNS (8.8.8.8)');
-} catch (e) {
-  console.warn('Failed to set public DNS servers, using system default.', e);
+// Fix for Node.js querySrv ECONNREFUSED issues on Windows local dev
+if (process.platform === 'win32') {
+  dns.setDefaultResultOrder('ipv4first');
+  try {
+    dns.setServers(['8.8.8.8', '8.8.4.4']);
+    console.log('DNS resolvers configured to Google DNS (8.8.8.8) on Windows');
+  } catch (e) {
+    console.warn('Failed to set public DNS servers, using system default.', e);
+  }
 }
 
 // Routes
